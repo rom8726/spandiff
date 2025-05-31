@@ -59,6 +59,61 @@ snapdiff rm pre
 snapdiff assert --from pre --to post --expected expected-changes.json
 ```
 
+The assert command compares the actual differences between two snapshots with an expected set of changes. This is useful for CI/CD pipelines to ensure that database operations produce the expected changes.
+
+#### Example of an expected changes file:
+
+```json
+{
+  "users": {
+    "inserted": [
+      {
+        "id": 3,
+        "name": "New User",
+        "email": "newuser@example.com",
+        "role": "user"
+      }
+    ],
+    "updated": [
+      {
+        "primary_key": {
+          "id": 1
+        },
+        "before": {
+          "role": "user"
+        },
+        "after": {
+          "role": "admin"
+        }
+      }
+    ],
+    "deleted": [
+      {
+        "id": 2,
+        "name": "Deleted User",
+        "email": "deleted@example.com",
+        "role": "user"
+      }
+    ]
+  }
+}
+```
+
+#### Example assert command:
+
+```bash
+# Compare snapshots and verify changes match expected-changes.json
+snapdiff assert --from snap1 --to snap2 --expected expected-changes.json
+
+# Filter by specific tables
+snapdiff assert --from snap1 --to snap2 --expected expected-changes.json --table users,profiles
+
+# Ignore specific columns in the comparison
+snapdiff assert --from snap1 --to snap2 --expected expected-changes.json --ignore-columns updated_at,created_at
+```
+
+The command will exit with a non-zero status if the actual changes don't match the expected changes, making it suitable for CI/CD pipelines.
+
 ## Command Options
 
 ### Global Options

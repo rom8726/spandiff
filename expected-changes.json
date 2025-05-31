@@ -1,0 +1,43 @@
+{
+  "mailbox": {
+    "inserted": [
+      {
+        "body": "New email body content",
+        "created_at": "2025-05-31T10:00:00.000000Z",
+        "email_profile_id": 2,
+        "from_email": "sender@example.org",
+        "id": 20,
+        "preview_token": null,
+        "raw": "Base64EncodedRawEmailContent",
+        "subject": "New Email Subject",
+        "to_email": "recipient@example.net"
+      }
+    ],
+    "updated": [
+      {
+        "primary_key": {
+          "id": 14
+        },
+        "before": {
+          "preview_token": null
+        },
+        "after": {
+          "preview_token": "MzJjYjkxMDI1YjI3NDAxNGFjM2I2MjJlODQxMTlhMGQ="
+        }
+      }
+    ],
+    "deleted": [
+      {
+        "body": "DeletedEmailBody",
+        "created_at": "2025-05-25T09:00:00.000000Z",
+        "email_profile_id": 2,
+        "from_email": "sender@example.org",
+        "id": 3,
+        "preview_token": null,
+        "raw": "Base64EncodedRawEmailContent",
+        "subject": "Deleted Email Subject",
+        "to_email": "recipient@example.net"
+      }
+    ]
+  }
+}
